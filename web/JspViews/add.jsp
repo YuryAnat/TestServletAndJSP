@@ -20,12 +20,20 @@
 
 <div>
     <%
-        if (request.getAttribute("userName") != null) {
-            out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
-                    "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
-                    "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
-                    "   <h5>User '" + request.getAttribute("userName") + "' added!</h5>\n" +
-                    "</div>");
+        if (request.getAttribute("added") != null){
+            if ((boolean) request.getAttribute("added")){
+                out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
+                        "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
+                        "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
+                        "   <h5>User '" + request.getParameter("name") + "' added!</h5>\n" +
+                        "</div>");
+            }else {
+                out.println("<div class=\"w3-panel w3-red w3-display-container w3-card-4 w3-round\">\n" +
+                        "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
+                        "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-red w3-hover-border-grey\">×</span>\n" +
+                        "   <h5>User '" + request.getParameter("name") + "' already exist!</h5>\n" +
+                        "</div>");
+            }
         }
     %>
     <div class="w3-card-4">

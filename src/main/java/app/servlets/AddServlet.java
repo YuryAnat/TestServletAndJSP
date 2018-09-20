@@ -22,11 +22,15 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("pass");
-        User user = new User(name, password);
         Model model = Model.getInstance();
-        model.add(user);
+        if (!model.find(name)){
+            User user = new User(name, password);
+            model.add(user);
+            req.setAttribute("added", true);
+        }else {
+            req.setAttribute("added", false);
+        }
 
-        req.setAttribute("userName", name);
         doGet(req, resp);
     }
 }

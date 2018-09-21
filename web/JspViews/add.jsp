@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: sysadmin
+  User:
   Date: 17.09.2018
   Time: 10:52
   To change this template use File | Settings | File Templates.
@@ -12,7 +12,6 @@
     <meta charset="UTF-8">
     <title>Add new user</title>
 </head>
-
 <body class="w3-light-gray">
 <div class="w3-container w3-blue-grey w3-opacity w3-center">
     <h1>Add users!</h1>

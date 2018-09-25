@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
-  User: sysadmin
+  User:
   Date: 17.09.2018
   Time: 10:52
   To change this template use File | Settings | File Templates.

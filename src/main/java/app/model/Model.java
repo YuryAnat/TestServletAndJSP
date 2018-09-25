@@ -1,5 +1,6 @@
 package app.model;
 
+import app.dataBase.BaseRepository;
 import app.entities.User;
 
 import java.util.ArrayList;

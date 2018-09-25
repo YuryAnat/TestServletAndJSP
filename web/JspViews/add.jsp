@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: sysadmin
+  User:
   Date: 17.09.2018
   Time: 10:52
   To change this template use File | Settings | File Templates.
@@ -12,7 +12,6 @@
     <meta charset="UTF-8">
     <title>Add new user</title>
 </head>
-
 <body class="w3-light-gray">
 <div class="w3-container w3-blue-grey w3-opacity w3-center">
     <h1>Add users!</h1>
@@ -20,12 +19,20 @@
 
 <div>
     <%
-        if (request.getAttribute("userName") != null) {
-            out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
-                    "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
-                    "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
-                    "   <h5>User '" + request.getAttribute("userName") + "' added!</h5>\n" +
-                    "</div>");
+        if (request.getAttribute("added") != null){
+            if ((boolean) request.getAttribute("added")){
+                out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
+                        "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
+                        "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
+                        "   <h5>User '" + request.getParameter("name") + "' added!</h5>\n" +
+                        "</div>");
+            }else {
+                out.println("<div class=\"w3-panel w3-red w3-display-container w3-card-4 w3-round\">\n" +
+                        "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
+                        "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-red w3-hover-border-grey\">×</span>\n" +
+                        "   <h5>User '" + request.getParameter("name") + "' already exist!</h5>\n" +
+                        "</div>");
+            }
         }
     %>
     <div class="w3-card-4">

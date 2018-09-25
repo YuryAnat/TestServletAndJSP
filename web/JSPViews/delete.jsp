@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: sysadmin
+  User:
   Date: 19.09.2018
   Time: 14:44
   To change this template use File | Settings | File Templates.
@@ -8,32 +8,47 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Delete user</title>
+    <link rel="stylesheet" href="styles/w3.css">
+    <title>Delete user!</title>
 </head>
-<body>
-    <div>
+<body class="w3-light-gray">
+    <div class="w3-card-4">
+        <div class="w3-container w3-center w3-green">
+            <h2>Delete user</h2>
+        </div>
         <%
             if (request.getAttribute("delUser") != null){
                 if ((boolean) request.getAttribute("delUser")){
-                    out.println("User delete: " + request.getParameter("name"));
+                    out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
+                            "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
+                            "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
+                            "   <h5>User delete: " + request.getParameter("name") +  "</h5>\n" +
+                            "</div>");
+
+                    //out.println("User delete: " + request.getParameter("name"));
                 }else {
-                    out.println("User name: " + request.getParameter("name") + " not found");
+                    out.println("<div class=\"w3-panel w3-green w3-display-container w3-card-4 w3-round\">\n" +
+                            "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
+                            "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-green w3-border w3-border-green w3-hover-border-grey\">×</span>\n" +
+                            "   <h5>User name: " + request.getParameter("name") + " not found" +  "</h5>\n" +
+                            "</div>");
+                    //out.println("User name: " + request.getParameter("name") + " not found");
                 }
             }
         %>
-        <form method="post">
+        <form method="post" class="w3-selection w3-light-grey w3-padding">
             <div>
-                <input type="text" name="name">
+                <input type="text" name="name" class="w3-input w3-animate-input w3-border w3-round-large" style="width: 30%">
             </div>
             <div>
-                <button type="submit">Delete</button>
+                <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom">Delete</button >
             </div>
         </form>
     </div>
 
 
-    <div>
-        <button onclick="location.href='/'">Back to main</button>
+    <div class="w3-container w3-grey w3-opacity w3-center w3-padding ">
+        <button onclick="location.href='/'" class="w3-btn w3-round-large w3-hover-light-green">Back to main</button>
     </div>
 </body>
 </html>

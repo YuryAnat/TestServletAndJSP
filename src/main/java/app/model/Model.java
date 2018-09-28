@@ -41,6 +41,7 @@ public class Model {
             if (user.getName().equals(name)){
                 user.setName(newName);
                 user.setPassword(pass);
+                System.out.println("Что то 111!!");
             }
         }
     }

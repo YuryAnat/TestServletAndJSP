@@ -1,4 +1,4 @@
-package app.dataBase;
+package app.bd;
 
 public class Config {
     protected static String host = "localhost";

@@ -1,6 +1,6 @@
 package app.servlets;
 
-import app.model.Model;
+import app.bd.RepositoryImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,13 +19,23 @@ public class DelServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
-        Model model = Model.getInstance();
-        if (model.find(name)){
-            model.del(name);
+
+        RepositoryImpl repository = new RepositoryImpl();
+        if (repository.findUser(name) != -1){
+            repository.deleteUser(repository.findUser(name));
             req.setAttribute("delUser",true);
         }else {
             req.setAttribute("delUser",false);
         }
+
+//        Model model = Model.getInstance();
+//        if (model.find(name)){
+//            model.del(name);
+//            req.setAttribute("delUser",true);
+//        }else {
+//            req.setAttribute("delUser",false);
+//        }
+
         doGet(req,resp);
     }
 }

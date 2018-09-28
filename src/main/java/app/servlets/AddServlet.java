@@ -1,8 +1,7 @@
 package app.servlets;
 
-import app.dataBase.BaseRepository;
+import app.bd.RepositoryImpl;
 import app.entities.User;
-import app.model.Model;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,12 +22,20 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
         String password = req.getParameter("pass");
-        Model model = Model.getInstance();
+
+        User user = new User(name, password);
+
+      /*  Model model = Model.getInstance();
         if (!model.find(name)){
-            User user = new User(name, password);
-            BaseRepository baseRepository = new BaseRepository();
-            baseRepository.addUser(user);
             model.add(user);
+            req.setAttribute("added", true);
+        }else {
+            req.setAttribute("added", false);
+        }*/
+
+        RepositoryImpl baseRepository = new RepositoryImpl();
+        if (baseRepository.findUser(name) == -1){
+            baseRepository.addUser(user);
             req.setAttribute("added", true);
         }else {
             req.setAttribute("added", false);

@@ -1,6 +1,7 @@
 package app.servlets;
 
-import app.model.Model;
+import app.bd.RepositoryImpl;
+import app.entities.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,13 +22,24 @@ public class EditServlet extends HttpServlet {
         String name = req.getParameter("name");
         String newName = req.getParameter("newName");
         String password = req.getParameter("pass");
-        Model model = Model.getInstance();
-        if (model.find(name)){
-            model.update(name,newName,password);
+
+        RepositoryImpl repository = new RepositoryImpl();
+        if (repository.findUser(name) != -1){
+            User newUser = new User(newName,password);
+            repository.updateUser(repository.findUser(name),newUser);
             req.setAttribute("passed",true);
         }else {
             req.setAttribute("passed",false);
         }
+
+//        Model model = Model.getInstance();
+//        if (model.find(name)){
+//            model.update(name,newName,password);
+//            req.setAttribute("passed",true);
+//        }else {
+//            req.setAttribute("passed",false);
+//        }
+
         doGet(req,resp);
     }
 }

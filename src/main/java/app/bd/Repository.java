@@ -1,4 +1,4 @@
-package app.dataBase;
+package app.bd;
 
 import app.entities.User;
 
@@ -10,5 +10,5 @@ public interface Repository {
     public int findUser(String name);
     public void deleteUser(int id);
     public void deleteAll();
-    public List<User> listUser();
+    public List<String> listUser();
 }

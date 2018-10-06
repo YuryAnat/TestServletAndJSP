@@ -1,15 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User:
-  Date: 17.09.2018
-  Time: 10:52
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <link rel="stylesheet" href="styles/w3.css">
-    <meta charset="UTF-8">
     <title>Add new user</title>
 </head>
 <body class="w3-light-gray">

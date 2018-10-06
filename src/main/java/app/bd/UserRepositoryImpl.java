@@ -1,6 +1,7 @@
 package app.bd;
 
-import app.entities.User;
+import app.entities.user.SavedUsers;
+import app.entities.user.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,13 +10,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositoryImpl implements Repository{
+public class UserRepositoryImpl implements Repository{
     private final String ADD_USER = "insert into \"user\".\"Users\" (name,password) values (?, ?);";
     private final String FIND_USER = "select id from \"user\".\"Users\" where name = ?";
     private final String UPDATE_USER = "update \"user\".\"Users\" set name=?, password=? where id=?";
     private final String DELETE_USER = "delete from \"user\".\"Users\" where id=?";
     private final String DELETE_ALL = "delete from \"user\".\"Users\"";
-    private final String LIST_USER = "select name,password from \"user\".\"Users\"";
+    private final String LIST_USER = "select * from \"user\".\"Users\"";
 
 
 
@@ -62,8 +63,6 @@ public class RepositoryImpl implements Repository{
 
     }
 
-
-
     @Override
     public void deleteUser(int id) {
         try(Connection con = new ConnectionPostgresql().getConnection()){
@@ -86,13 +85,17 @@ public class RepositoryImpl implements Repository{
     }
 
     @Override
-    public List<String> listUser() {
+    public List<SavedUsers> listUser() {
         try(Connection con = new ConnectionPostgresql().getConnection()){
             PreparedStatement prst = con.prepareStatement(LIST_USER);
             ResultSet resultSet = prst.executeQuery();
-            List<String> list = new ArrayList();
+            List<SavedUsers> list = new ArrayList();
             while (resultSet.next()){
-                list.add(resultSet.getString("name").trim());
+                SavedUsers savedUsers = new SavedUsers();
+                savedUsers.setId(resultSet.getInt("id"));
+                savedUsers.setName(resultSet.getString("name").trim());
+                savedUsers.setPassword("nope");
+                list.add(savedUsers);
             }
                 return list;
         } catch (SQLException e) {

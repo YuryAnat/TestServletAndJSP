@@ -6,6 +6,15 @@
            version="4.0">
     <display-name>Test page</display-name>
 
+
+    <servlet>
+        <servlet-name>ListPet</servlet-name>
+        <servlet-class>app.servlets.PetsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Main</servlet-name>
+        <servlet-class>app.servlets.MainServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>Add</servlet-name>
         <servlet-class>app.servlets.AddServlet</servlet-class>
@@ -23,6 +32,14 @@
         <servlet-class>app.servlets.DelServlet</servlet-class>
     </servlet>
     
+    <servlet-mapping>
+        <servlet-name>ListPet</servlet-name>
+        <url-pattern>/listPet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Main</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Add</servlet-name>
         <url-pattern>/add</url-pattern>

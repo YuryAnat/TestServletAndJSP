@@ -1,10 +1,5 @@
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User:
-  Date: 17.09.2018
-  Time: 10:52
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ page import="app.entities.user.SavedUsers" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,6 +7,14 @@
     <meta charset="UTF-8">
     <title>Users</title>
 </head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        text-align: center;
+    }
+</style>
 
 <body class="w3-light-gray">
 <div class="w3-container w3-blue-grey w3-opacity w3-left-align">
@@ -24,14 +27,24 @@
             <h2>Users</h2>
         </div>
         <%
-            List<String> names = (List<String>) request.getAttribute("userNames");
+            List<SavedUsers> names = (List<SavedUsers>) request.getAttribute("userNames");
 
             if (names != null && !names.isEmpty()) {
-                out.println("<ul class=\"w3-ul\">");
-                for (String s : names) {
-                    out.println("<li class=\"w3-hover-sand\">" + s + "</li>");
-                }
-                out.println("</ul>");
+
+
+
+                out.println("<table style=\"width:50%\">\n");
+                out.println("<tr>" + "<th>id</th>\n" + "<th>name</th>\n" + "<th></th>" + "</tr>");
+
+                    for (SavedUsers s : names) {
+                        out.println("<tr>");
+                        out.println("<td>" + s.getId() + "</td>");
+                        out.println("<td>" + s.getName() + "</td>");
+                        out.println("<td>" + "<button onclick=\"location.href='/listPet'\"${line.id}>List pets</button>" + "</td>");
+                        out.println("</tr>");
+                    }
+
+                out.println("</table>\n");
 
             } else out.println("<div class=\"w3-panel w3-red w3-display-container w3-card-4 w3-round\">\n"
                     +

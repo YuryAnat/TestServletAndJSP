@@ -1,7 +1,7 @@
 package app.servlets;
 
-import app.bd.RepositoryImpl;
-import app.entities.User;
+import app.bd.UserRepositoryImpl;
+import app.entities.user.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ public class EditServlet extends HttpServlet {
         String newName = req.getParameter("newName");
         String password = req.getParameter("pass");
 
-        RepositoryImpl repository = new RepositoryImpl();
+        UserRepositoryImpl repository = new UserRepositoryImpl();
         if (repository.findUser(name) != -1){
             User newUser = new User(newName,password);
             repository.updateUser(repository.findUser(name),newUser);

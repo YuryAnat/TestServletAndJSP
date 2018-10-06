@@ -1,6 +1,7 @@
 package app.servlets;
 
-import app.bd.RepositoryImpl;
+import app.bd.UserRepositoryImpl;
+import app.entities.user.SavedUsers;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,8 +18,8 @@ public class ListServlet extends HttpServlet {
 
 //        Model model = Model.getInstance();
 //        List<String> names = model.list();
-        RepositoryImpl repository = new RepositoryImpl();
-        List<String> names = repository.listUser();
+        UserRepositoryImpl repository = new UserRepositoryImpl();
+        List<SavedUsers> names = repository.listUser();
 
         req.setAttribute("userNames", names);
 

@@ -1,6 +1,6 @@
 package app.servlets;
 
-import app.bd.RepositoryImpl;
+import app.bd.UserRepositoryImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ public class DelServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("name");
 
-        RepositoryImpl repository = new RepositoryImpl();
+        UserRepositoryImpl repository = new UserRepositoryImpl();
         if (repository.findUser(name) != -1){
             repository.deleteUser(repository.findUser(name));
             req.setAttribute("delUser",true);

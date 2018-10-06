@@ -1,10 +1,14 @@
-package app.entities;
+package app.entities.user;
 
+import app.entities.pets.Pet;
+
+import java.util.List;
 import java.util.Objects;
 
 public class User {
     private String name;
     private String password;
+    private List<Pet> pets;
 
     public User() {
     }
@@ -50,5 +54,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Pet> getPets() {
+        return pets;
+    }
+
+    public void setPets(Pet pet) {
+        pets.add(pet);
     }
 }

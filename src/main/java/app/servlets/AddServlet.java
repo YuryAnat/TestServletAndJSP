@@ -1,7 +1,7 @@
 package app.servlets;
 
-import app.bd.RepositoryImpl;
-import app.entities.User;
+import app.bd.UserRepositoryImpl;
+import app.entities.user.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,7 +33,7 @@ public class AddServlet extends HttpServlet {
             req.setAttribute("added", false);
         }*/
 
-        RepositoryImpl baseRepository = new RepositoryImpl();
+        UserRepositoryImpl baseRepository = new UserRepositoryImpl();
         if (baseRepository.findUser(name) == -1){
             baseRepository.addUser(user);
             req.setAttribute("added", true);

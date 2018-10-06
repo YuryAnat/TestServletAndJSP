@@ -1,14 +1,15 @@
 package app.bd;
 
-import app.entities.User;
+import app.entities.user.SavedUsers;
+import app.entities.user.User;
 
 import java.util.List;
 
 public interface Repository {
-    public void addUser(User addUser);
-    public void updateUser(int id, User updateUser);
-    public int findUser(String name);
-    public void deleteUser(int id);
-    public void deleteAll();
-    public List<String> listUser();
+    void addUser(User addUser);
+    void updateUser(int id, User updateUser);
+    int findUser(String name);
+    void deleteUser(int id);
+    void deleteAll();
+    List<SavedUsers> listUser();
 }

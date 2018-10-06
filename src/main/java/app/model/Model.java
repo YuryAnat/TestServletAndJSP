@@ -1,6 +1,6 @@
 package app.model;
 
-import app.entities.User;
+import app.entities.user.User;
 
 import java.util.ArrayList;
 import java.util.Iterator;

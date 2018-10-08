@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
-<%@ page import="app.entities.user.SavedUsers" %>
+<%@ page import="app.entities.user.SavedUser" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <link rel="stylesheet" href="styles/w3.css">
@@ -26,8 +27,29 @@
         <div class="w3-container w3-light-blue">
             <h2>Users</h2>
         </div>
-        <%
-            List<SavedUsers> names = (List<SavedUsers>) request.getAttribute("userNames");
+
+        <table style="width:50%">
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Act</th>
+            </tr>
+            <c:forEach items="${userNames}" var="name">
+                <tr>
+                    <td>${name.id}</td>
+                    <td>${name.name}</td>
+                    <td>
+                        <button onclick="location.href='/listPet?id=${name.id}'">List pets</button>
+                    </td>
+
+                </tr>
+            </c:forEach>
+        </table>
+
+
+
+     <%--   <%
+            List<SavedUser> names = (List<SavedUser>) request.getAttribute("userNames");
 
             if (names != null && !names.isEmpty()) {
 
@@ -36,11 +58,11 @@
                 out.println("<table style=\"width:50%\">\n");
                 out.println("<tr>" + "<th>id</th>\n" + "<th>name</th>\n" + "<th></th>" + "</tr>");
 
-                    for (SavedUsers s : names) {
+                    for (SavedUser s : names) {
                         out.println("<tr>");
                         out.println("<td>" + s.getId() + "</td>");
                         out.println("<td>" + s.getName() + "</td>");
-                        out.println("<td>" + "<button onclick=\"location.href='/listPet'\"${line.id}>List pets</button>" + "</td>");
+                        out.println("<td>" + "<button onclick=\"location.href='/listPet'\"${"+s.getId()+"}>List pets</button>" + "</td>");
                         out.println("</tr>");
                     }
 
@@ -52,7 +74,7 @@
                     "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-red w3-border w3-border-red w3-hover-border-grey\">×</span>\n" +
                     "   <h5>There are no users yet!</h5>\n" +
                     "</div>");
-        %>
+        %>--%>
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 package app.bd;
 
-import app.entities.user.SavedUsers;
+import app.entities.user.SavedUser;
 import app.entities.user.User;
 
 import java.sql.Connection;
@@ -65,13 +65,7 @@ public class UserRepositoryImpl implements Repository{
 
     @Override
     public void deleteUser(int id) {
-        try(Connection con = new ConnectionPostgresql().getConnection()){
-            PreparedStatement prst = con.prepareStatement(DELETE_USER);
-            prst.setInt(1, id);
-            prst.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        PetRepositoryImpl.deletePet(id, DELETE_USER);
     }
 
     @Override
@@ -85,13 +79,13 @@ public class UserRepositoryImpl implements Repository{
     }
 
     @Override
-    public List<SavedUsers> listUser() {
+    public List<SavedUser> listUser() {
         try(Connection con = new ConnectionPostgresql().getConnection()){
             PreparedStatement prst = con.prepareStatement(LIST_USER);
             ResultSet resultSet = prst.executeQuery();
-            List<SavedUsers> list = new ArrayList();
+            List<SavedUser> list = new ArrayList();
             while (resultSet.next()){
-                SavedUsers savedUsers = new SavedUsers();
+                SavedUser savedUsers = new SavedUser();
                 savedUsers.setId(resultSet.getInt("id"));
                 savedUsers.setName(resultSet.getString("name").trim());
                 savedUsers.setPassword("nope");

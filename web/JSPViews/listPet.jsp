@@ -6,9 +6,12 @@
 <body>
     <div>
         <%
-            request.getParameter("line.ID");
+            out.println(request.getParameter("id"));
             out.println("Hello");
         %>
+
+
+
     </div>
 
 

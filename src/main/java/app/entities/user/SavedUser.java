@@ -1,16 +1,16 @@
 package app.entities.user;
 
-public class SavedUsers extends User{
+public class SavedUser extends User{
     private int id;
 
-    public SavedUsers() {
+    public SavedUser() {
     }
 
-    public SavedUsers(int id) {
+    public SavedUser(int id) {
         this.id = id;
     }
 
-    public SavedUsers(String name, String password, int id) {
+    public SavedUser(String name, String password, int id) {
         super(name, password);
         this.id = id;
     }
